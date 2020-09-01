@@ -1,0 +1,55 @@
+logging:
+  level:
+    root: warn
+#    org.apache.http: DEBUG
+spring:
+  main:
+    banner-mode: off
+  jpa:
+    properties:
+      javax:
+        persistence:
+          validation:
+            mode: none # Single Validation in Spring Boot.
+            # JPA level must be disabled to avoid double validation.
+            # See https://www.naturalprogrammer.com/blog/16386/switch-off-jpa-validation-spring-boot
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+#  If application/json is explicit the format is "non-HAL" (i.e., "_embedded" ->  "content",  "_links" -> "links")
+#  See also https://github.com/toedter/hal-explorer
+#  data:
+#    rest:
+#      defaultMediaType: application/json
+
+# Mappings to avoid to pollute the code with SITMUN names
+mappings:
+  entities:
+    Code:
+      table-name: stm_code
+      columns:
+          id: cod_id
+          code: cod_code
+          codeList: cod_code_list
+    Translation:
+      table-name: stm_translation
+      columns:
+        id: tra_id
+        content: tra_content
+        entityId: tra_entity_id
+        locale: tra_locale
+        key: tra_key
+    User:
+      table-name: stm_user
+      columns:
+        id: usr_id
+        homepage: usr_homepage
+        name: usr_name
+        primaryEmail: usr_primary_email
+        secondaryEmail: usr_secondary_email
+        projection: usr_projection
+        projections: usr_projections
+        tag: usr_tag
+        tags: usr_tags
+
